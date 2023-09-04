@@ -4,26 +4,27 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.task_2.resources.abstracts.TreeNode;
 
 import java.io.FileReader;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
 
+@Slf4j
 @NoArgsConstructor
-public class BinaryTree <T extends TreeNode> {
+public class BinaryTree {
     private Node root;
     private int size = 0;
 
-    public void add(T object) {
+    public void add(TreeNode object) {
         if (root == null)
             root = new Node(object);
         else {
             Node parent = getParentNode(new Node(object));
             // проверка на то, существует ли уже нода с такими данными
-            if (parent.left.data.equals(object) || parent.right.data.equals(object))
+            if (parent == null ||
+                    parent.left != null && parent.left.data.equals(object) ||
+                    parent.right != null && parent.right.data.equals(object))
                 return;
 
             if (object.compareTo(parent.data) > 0)
@@ -51,11 +52,13 @@ public class BinaryTree <T extends TreeNode> {
         return find(id, subId) != null;
     }
 
-    public boolean contains(T object) {
+    public boolean contains(TreeNode object) {
+        if (find(object.getId(), object.getSubId()) == null)
+            return false;
         return find(object.getId(), object.getSubId()).equals(object);
     }
 
-    public T first() {
+    public TreeNode first() {
         return root.data;
     }
 
@@ -68,7 +71,7 @@ public class BinaryTree <T extends TreeNode> {
             return removeNonRootNode(findNode(id, subId));
     }
 
-    public boolean remove(T object) {
+    public boolean remove(TreeNode object) {
         if (!contains(object))
             return false;
         if (object.equals(root.data))
@@ -77,47 +80,53 @@ public class BinaryTree <T extends TreeNode> {
             return removeNonRootNode(findNode(object.getId(), object.getSubId()));
     }
 
-    public T find(Long id, Long subId) {
-        return findNode(id, subId).data;
+    public TreeNode find(Long id, Long subId) {
+        if (findNode(id, subId) != null)
+            return findNode(id, subId).data;
+        return null;
     }
 
+    // возвращает ноду, если она есть
+    // возвращает null, если ноды нет
     private Node findNode(Long id, Long subId) {
         Node current = root;
         while (current != null) {
             if (id + subId == current.data.getId() + current.data.getSubId())
                 return current;
-            else
-            if (id + subId > current.data.getId() + current.data.getSubId())
-                current = current.right;
-            else
-                current = current.left;
+            else {
+                if (id + subId > current.data.getId() + current.data.getSubId())
+                    current = current.right;
+                else
+                    current = current.left;
+            }
         }
-        throw new NoSuchElementException("This element is missing in the tree!");
+        return null;
     }
 
+    // TODO проверить
     public void addFromJson(String src) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNodes = mapper.readTree(new FileReader(src));
-            for (JsonNode node: jsonNodes) {
+            for (JsonNode node : jsonNodes) {
                 try {
-                    //add(mapper.treeToValue(node, T));
+                    add(mapper.treeToValue(node, TreeNode.class));
                 } catch (Exception e) {
-                    // TODO выводить в лог
+                    log.error("The element \"%s\" was not added to the tree because it is not an inheritor of the TreeNode".formatted(node.toString()));
                 }
             }
         } catch (Exception e) {
-            
+            log.info("File on path \"%s\" was not found!".formatted(src));
         }
     }
 
-    public T[] toArray(T[] mas) {
-        LinkedList<T> list = new LinkedList<>();
+    public TreeNode[] toArray(TreeNode[] mas) {
+        LinkedList<TreeNode> list = new LinkedList<>();
         lcr(root, list);
         return list.toArray(mas);
     }
 
-    private void lcr(Node node, LinkedList<T> list) {
+    private void lcr(Node node, LinkedList<TreeNode> list) {
         if (node != null) {
             lcr(node.left, list);
             list.add(node.data);
@@ -149,7 +158,7 @@ public class BinaryTree <T extends TreeNode> {
     }
 
     private boolean removeNonRootNode(Node heir) {
-        if (isEmpty())
+        if (isEmpty() || heir == null)
             return false;
 
         Node parent = getParentNode(heir);
@@ -181,30 +190,34 @@ public class BinaryTree <T extends TreeNode> {
         return true;
     }
 
-    // получает родителя ноды
+    // возвращает родителя ноды
+    // возвращает null, если нода с такими данными уже есть
     private Node getParentNode(Node heir) {
-        if (heir == root)
+        if (heir.data == root.data)
             return null;
 
         Node current = root;
         Node prev = null;
-        while (current != null || current.left.data.equals(heir.data) || current.right.data.equals(heir.data)) {
+        while (current != null) { // && heir.data.compareTo(current.data) != 0
             prev = current;
+            if ((current.left != null && heir.data.equals(current.left.data)) || (current.right != null && heir.data.equals(current.right.data)))
+                break;
             if (heir.data.compareTo(current.data) > 0)
                 current = current.right;
             else
                 current = current.left;
         }
+
         return prev;
     }
 
     @Getter
     private class Node {
-        private final T data;
+        private final TreeNode data;
         private Node left = null;
         private Node right = null;
 
-        Node(T object) {
+        Node(TreeNode object) {
             data = object;
         }
     }

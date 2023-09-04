@@ -16,8 +16,8 @@ public class Node1 extends TreeNode {
     private double paramDouble;
     private boolean paramBool;
 
-    @Override
-    public int compareTo(TreeNode o) {
-        return super.compareTo(o);
+    public Node1(Long id, Long subId) {
+        this.setId(id);
+        this.setSubId(subId);
     }
 }

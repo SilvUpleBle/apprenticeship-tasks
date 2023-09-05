@@ -1,0 +1,48 @@
+<PosEdmsResponse xmlns="http://pos.gosuslugi.ru/edms/appeal/1.1.0" xmlns:ns2="http://pos.gosuslugi.ru/edms/appeal/common/1.1.0" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<AppealListResponse>
+		<Status>
+			<ns2:OperationResult>SUCCESS</ns2:OperationResult>
+		</Status>
+		<Appeals>
+			<Appeal>
+				<Id>563050493</Id>
+				<Description>Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед. Тестовое обращение для загрузки на тестсед.</Description>
+				<SubjectId>124</SubjectId>
+				<SubjectName>Экономика и бизнес</SubjectName>
+				<SubsubjectId>378</SubsubjectId>
+				<SubsubjectName>Ограничение конкуренции</SubsubjectName>
+				<FactName/>
+				<AnswerAt>2023-08-10T20:59:59.000Z</AnswerAt>
+				<FastTrack>false</FastTrack>
+				<CreatedAt>2023-07-12T06:55:51.562Z</CreatedAt>
+				<RegionId>0c089b04-099e-4e0e-955a-6bf1ce525f1a</RegionId>
+				<RegionName>Республика Татарстан</RegionName>
+				<Address>Казань, улица Академика Кирпичникова, 12, подъезд 1</Address>
+				<OpaId>732076</OpaId>
+				<OpaName>МИНИСТЕРСТВО ФИНАНСОВ РОССИЙСКОЙ ФЕДЕРАЦИИ</OpaName>
+				<Shared>true</Shared>
+				<Applicant>
+					<Surname>Горчакова</Surname>
+					<Name>Аделаида</Name>
+					<Patronymic>Мустафаровна</Patronymic>
+					<Email>uip.testik@gmail.com</Email>
+					<Phone>+7 (969) 632-54-11; +7 (927) 864-63-58</Phone>
+					<PostAddress>420029, Россия, Респ Татарстан, г Казань, ул Академика Кирпичникова, д 13/12,</PostAddress>
+					<SendWithRussiaPost>false</SendWithRussiaPost>
+				</Applicant>
+				<Attachments>
+					<ns2:FileId>da686240-50fc-4201-bdb7-18a58b8274fd</ns2:FileId>
+					<ns2:FileId>7e95c1ea-92d6-429c-89a6-6fdf85276496</ns2:FileId>
+					<ns2:FileId>1dbd6781-386f-4d34-8e87-10aa8fb859fe</ns2:FileId>
+					<ns2:FileId>6f4f2964-ab4f-409c-a201-2f08c87369a6</ns2:FileId>
+					<ns2:FileId>05e33e66-5ae8-4f03-b562-4ca164f133a0</ns2:FileId>
+					<ns2:FileId>1ec0a3ef-7182-4386-aa87-49c9ae6b7187</ns2:FileId>
+					<ns2:FileId>8a3232da-f38e-4b43-b06c-39fd68317adf</ns2:FileId>
+					<ns2:FileId>f8053262-ba28-4916-88e6-227416a42b0c</ns2:FileId>
+				</Attachments>
+				<Coordinates>55.80743000,49.18755000</Coordinates>
+			</Appeal>
+		</Appeals>
+		<Count>1</Count>
+	</AppealListResponse>
+</PosEdmsResponse>

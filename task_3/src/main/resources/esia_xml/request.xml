@@ -1,0 +1,18 @@
+<ESIAFindAccountRequest xmlns="urn://mincomsvyaz/esia/reg_service/find_account/1.4.6" xmlns:ns2="urn://mincomsvyaz/esia/commons/rg_sevices_types/1.4.6" xmlns:ns3="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/1.1" xmlns:ns4="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/basic/1.1">
+	<RoutingCode>TESIA</RoutingCode>
+	<SnilsOperator>328-807-072 90</SnilsOperator>
+	<ra>1000583622</ra>
+	<lastName>Осипов</lastName>
+	<firstName>Никита</firstName>
+	<doc>
+		<ns2:type>FRGN_PASS</ns2:type>
+		<ns2:series>55</ns2:series>
+		<ns2:number>1231233</ns2:number>
+		<ns2:issueDate>17.08.2020</ns2:issueDate>
+		<ns2:expiryDate>01.09.2023</ns2:expiryDate>
+		<ns2:issuedBy>123123</ns2:issuedBy>
+	</doc>
+	<email>nik.osipov2011@yandex.ru</email>
+	<mobile>+7(961)6930604</mobile>
+	<snils>995-277-326 80</snils>
+</ESIAFindAccountRequest>

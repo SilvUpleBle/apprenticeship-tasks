@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.task_3.resources.Converter;
 
-import java.io.FileInputStream;
-import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,7 +25,7 @@ public class ConverterTest {
             e.printStackTrace();
         }
     }
-    // "src/main/resources/esia_xml/request.xml", ESIAFindAccountRequest.class, "output.json"
+
     @Test
     public void pojoToJsonTest() {
         try {

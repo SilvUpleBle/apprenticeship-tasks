@@ -26,8 +26,6 @@ public class Converter {
             JAXBContext jaxbContext = JAXBContext.newInstance(classType);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             return unmarshaller.unmarshal(new StreamSource(new StringReader(xmlString)), classType).getValue();
-            // можно ли так?
-            // return (T) unmarshaller.unmarshal(new File(xmlPath));
         } catch (UnmarshalException e) {
             log.error(e.getMessage());
             throw new IllegalArgumentException("Could not unmarshall object from xml!");

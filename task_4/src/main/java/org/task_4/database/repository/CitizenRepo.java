@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.task_4.database.model.Citizen;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +19,10 @@ public interface CitizenRepo extends JpaRepository<Citizen, Long> {
             "AND (:middleName is null or c.middleName = :middleName) " +
             "AND (:birthDate is null or c.birthDate = :birthDate)"
     )
-    List<Citizen> findListOfCitizensByOptionalParams(@Param("lastName")String lastName,
-                                                     @Param("firstName")String firstName,
-                                                     @Param("middleName")String middleName,
-                                                     @Param("birthDate")String birthDate
+    List<Citizen> findListOfCitizensByOptionalParams(
+            @Param("lastName") String lastName,
+            @Param("firstName") String firstName,
+            @Param("middleName") String middleName,
+            @Param("birthDate") Date birthDate
     );
 }

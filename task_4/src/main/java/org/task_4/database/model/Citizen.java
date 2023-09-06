@@ -5,10 +5,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import org.task_4.interfaces.Marker;
+import org.yaml.snakeyaml.error.Mark;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //- last_name - фамилия, не может быть пустым
 //- first_name - имя, не может быть пустым
@@ -33,13 +35,13 @@ public class Citizen {
     private Long id;
 
     @Column(name = "last_name")
-    @NotNull(message = "Last name may not be null!")
-    @NotEmpty(message = "Last name may not be empty!")
+    @NotNull(message = "Last name may not be null!", groups = Marker.onCreate.class)
+    @NotEmpty(message = "Last name may not be empty!", groups = Marker.onCreate.class)
     private String lastName;
 
     @Column(name = "first_name")
-    @NotNull(message = "First name may not be null!")
-    @NotEmpty(message = "First name may not be empty!")
+    @NotNull(message = "First name may not be null!", groups = Marker.onCreate.class)
+    @NotEmpty(message = "First name may not be empty!", groups = Marker.onCreate.class)
     private String firstName;
 
     @Column(name = "middle_name")
@@ -74,6 +76,6 @@ public class Citizen {
 
     public void setBirthDate(String birthDate) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        this.birthDate = (Date) sdf.parse(birthDate);
+        this.birthDate = sdf.parse(birthDate);
     }
 }

@@ -18,12 +18,11 @@ public class SomeData2 extends DataNode {
 
     @Override
     public String print() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            DefaultPrettyPrinter printer = new DefaultPrettyPrinter().withObjectIndenter(new DefaultIndenter("    ", "\n"));
-            return objectMapper.writer(printer).writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            return e.getMessage();
-        }
+        StringBuilder sb = new StringBuilder("{\n\t");
+        sb.append("\"paramInt\" : ").append(paramInt).append(",\n\t");
+        sb.append("\"paramStr\" : ").append(paramStr).append(",\n\t");
+        sb.append("\"paramDouble\" : ").append(paramDouble).append(",\n\t");
+        sb.append("\"paramBool\" : ").append(paramBool).append("\n}");
+        return sb.toString();
     }
 }

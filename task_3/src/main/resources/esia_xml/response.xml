@@ -1,0 +1,6 @@
+<ESIAFindAccountResponse xmlns="urn://mincomsvyaz/esia/reg_service/find_account/1.4.6" xmlns:ns2="urn://mincomsvyaz/esia/commons/rg_sevices_types/1.4.6" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<errorStatusInfo>
+		<ns2:Code>ESIA-020002</ns2:Code>
+		<ns2:Message>Пользователь не найден</ns2:Message>
+	</errorStatusInfo>
+</ESIAFindAccountResponse>

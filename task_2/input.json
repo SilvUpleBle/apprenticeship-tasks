@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 2,
+        "subId" : 2,
+        "className" : "Node2"
+    },
+    {
+        "id" : 1,
+        "subId" : 1,
+        "className" : "Node1"
+    },
+    {
+        "id" : 3,
+        "subId" : 3,
+        "className" : "Node3"
+    },
+    {
+        "id" : -2,
+        "subId" : -2,
+        "className" : "Node2"
+    },
+    {
+        "id" : -1,
+        "subId" : -1,
+        "className" : "Node1"
+    },
+    {
+        "id" : 4,
+        "subId" : 4,
+        "classNam" : "Node2"
+    }
+]
